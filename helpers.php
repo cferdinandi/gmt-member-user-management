@@ -68,14 +68,7 @@
 	 * @return array         The summary of content
 	 */
 	function gmt_member_get_content_summary ($email = '') {
-
-		// Make sure user has an active subscription
-		$active = gmt_member_has_active_subscription($email);
-		if (empty($active)) return;
-
-		// Get content data
 		return json_decode(file_get_contents(realpath(ABSPATH . DIRECTORY_SEPARATOR . '..') . '/index.json'), false);
-
 	}
 
 
@@ -88,10 +81,6 @@
 
 		// Ensure correct data provided
 		if (empty($type) || empty($api_dir)) return;
-
-		// Make sure user has an active subscription
-		$active = gmt_member_has_active_subscription($email);
-		if (empty($active)) return;
 
 		// Get content details
 		return json_decode(file_get_contents(realpath(ABSPATH . DIRECTORY_SEPARATOR . '..') . '/' . trim($api_dir, '/') . '/index.json'), false);

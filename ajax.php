@@ -31,6 +31,17 @@
 	}
 
 	/**
+	 * Return a "no active subscription" response
+	 */
+	function gmt_member_no_active_subscription () {
+		wp_send_json(array(
+			'code' => 402,
+			'status' => 'failed',
+			'message' => 'You do not have an active subscription.'
+		), 402);
+	}
+
+	/**
 	 * Return an "invalid key" response
 	 */
 	function gmt_member_invalid_key_response () {
@@ -533,6 +544,11 @@
 		// If user isn't logged in, return error
 		if (!is_user_logged_in()) {
 			gmt_member_not_logged_in_response();
+		}
+
+		// If user doesn't have an active subscription, return error
+		if (!gmt_member_has_active_subscription($email)) {
+			gmt_member_no_active_subscription();
 		}
 
 		// Get endpoint
