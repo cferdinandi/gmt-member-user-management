@@ -54,11 +54,8 @@ fetch('/wp-admin/admin-ajax.php', {
 ### Actions
 
 - `gmt_member_is_logged_in` - Check if the current user is logged in.
-- `gmt_member_get_products` - Get purchased products for a logged in user. // @todo
 - `gmt_member_login` - Log a user in.
 - `gmt_member_logout` - Log the current user out.
-- `gmt_member_create_user` - Create a new user.
-- `gmt_member_validate_new_account` - Validate a new user account.
 - `gmt_member_change_password` - Update a user's password.
 - `gmt_member_lost_password` - Send a lost password reset email.
 - `gmt_member_reset_password` - Reset a lost password.

@@ -528,7 +528,7 @@
 	/**
 	 * Get the details for a course for a logged in user
 	 */
-	function gmt_member_get_product_data () {
+	function gmt_member_get_content_data () {
 
 		// If user isn't logged in, return error
 		if (!is_user_logged_in()) {
@@ -575,10 +575,10 @@
 
 
 	/**
-	 * Add a custom product feed
+	 * Add a custom content feed
 	 * This adds a feed http://example.com/?feed=myfeed
 	 */
-	function gmt_member_add_product_feed () {
-		add_feed('gmt-product-data', 'gmt_member_get_product_data');
+	function gmt_member_add_content_feed () {
+		add_feed('gmt-content-data', 'gmt_member_get_content_data');
 	}
-	add_action('init', 'gmt_member_add_product_feed');
+	add_action('init', 'gmt_member_add_content_feed');
