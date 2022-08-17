@@ -546,6 +546,10 @@
 			gmt_member_not_logged_in_response();
 		}
 
+		// Get user data
+		$user = wp_get_current_user();
+		$email = $user->user_email;
+
 		// If user doesn't have an active subscription, return error
 		if (!gmt_member_has_active_subscription($email)) {
 			gmt_member_no_active_subscription();
@@ -562,13 +566,12 @@
 			), 400);
 		}
 
-		// Get user data
-		$user = wp_get_current_user();
+		// Get content data
 		$data = null;
 		if ($api === 'summary') {
-			$data = gmt_member_get_content_summary($user->user_email);
+			$data = gmt_member_get_content_summary($email);
 		} else {
-			$data = gmt_member_get_content_details($user->user_email, $type, $api);
+			$data = gmt_member_get_content_details($email, $type, $api);
 		}
 
 		// If there's no data, show an error
